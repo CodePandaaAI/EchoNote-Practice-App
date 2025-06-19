@@ -25,32 +25,24 @@ class LogActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             EchoNoteTheme {
-                Scaffold(
-                    topBar = {
-                        TopAppBar(
-                            title =
-                                {
-                                    Text("Charger Status Log")
-                                }
-                        )
-                    }
-                ) { paddingValues ->
-                    LogScreen(title = title, modifier = Modifier.padding(paddingValues))
-                }
+
+                LogScreen(title = title)
             }
         }
     }
-}
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun LogScreen(title: String, modifier: Modifier) {
-    Scaffold(topBar = { TopAppBar(title = { Text(title) }) }) { padding ->
-        Box(
-            modifier = Modifier.fillMaxSize().padding(padding),
-            contentAlignment = Alignment.Center
-        ) {
-            Text("Logs will appear here...")
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun LogScreen(title: String) {
+        Scaffold(topBar = { TopAppBar(title = { Text(title) }) }) { padding ->
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(padding),
+                contentAlignment = Alignment.Center
+            ) {
+                Text("Logs will appear here...")
+            }
         }
     }
 }
